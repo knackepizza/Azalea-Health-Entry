@@ -1,8 +1,8 @@
 function smallest_common_number(arr1, arr2, arr3) {
     // If sufficient arrays are passed
     if ((arr1 != undefined) && (arr2 != undefined) && (arr3 != undefined)) {
-        // Declare the lowest number with NO value so if it never gets set, it will be undefined 
-        let lowest;
+        // Declare the lowest number as false so if one is never found, it returns false
+        let lowest = false;
 
         // Sort arr1 in ascending order
         arr1 = arr1.sort();
@@ -15,12 +15,8 @@ function smallest_common_number(arr1, arr2, arr3) {
             }
         }
 
-        // If there is no number found (lowest is undefined), return false
-        if (lowest != undefined) {
-            return lowest;
-        } else {
-            return false;
-        }
+        // Return lowest. If a lowest was found, it will be the number, if not, it will be false
+        return lowest;
     }
 }
 

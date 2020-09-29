@@ -1,7 +1,8 @@
 <?php 
 function smallest_common_number($arr1, $arr2, $arr3) {
-    // Declare lowest with no value so if its never initialized it is unset
-    $lowest;
+    // Declare lowest as false so if it is never overridden, it returns false
+    // Also I did a string "false" instead of a boolean, so you can see it in the page
+    $lowest = "false";
     
     // Sort arr1 in ascending order
     sort($arr1);
@@ -14,21 +15,11 @@ function smallest_common_number($arr1, $arr2, $arr3) {
         }
     }
 
-    // If lowest is initialized (set), return it
-    if (isset($lowest)) {
-        return $lowest;
-    } else {
-        // Returning boolean false will not appear on the page, I will change to a string for the sake of visual feedback.
-        return "false";
-    }
+    // Return lowest. If a lowest was found, it will be the number, if not, it will be "false"
+    return $lowest;
 }
 
 // Echoing these so you can actually see it
-/*
-    Also, depending on the processor you use, <br> may output as text or an actual HTML line break.
-    Real servers (IIS, xampp, nginx) will output as a line break but using a "Execute PHP Online" site will probably
-    output it as <br> text to stop people from injecting their site.
-*/
-echo "First Input: " . smallest_common_number([1, 2, 3, 5, 6], [2, 3, 4, 5, 6], [4, 5, 6, 7, 8]) . "<br>"; // 5
-echo "Second Input: " . smallest_common_number([2, 4, 6, 8, 10], [1, 3, 5, 7, 9], [55, 100, 200]); // false
+echo smallest_common_number([1, 2, 3, 5, 6], [2, 3, 4, 5, 6], [4, 5, 6, 7, 8]) . "<br>"; // 5
+echo smallest_common_number([2, 4, 6, 8, 10], [1, 3, 5, 7, 9], [55, 100, 200]); // false
 ?>
